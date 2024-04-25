@@ -17,7 +17,7 @@ app.post("/api/fileanalyse", upload.single("upfile"), (req,res)=>{
   try {
     const file = req.file;
     res.status(200).json({
-      name: file.filename,
+      name: file.originalname,
       type: file.mimetype,
       size: file.size
     });
