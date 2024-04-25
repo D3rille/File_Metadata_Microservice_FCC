@@ -15,9 +15,12 @@ app.get('/', function (req, res) {
 
 app.post("/api/fileanalyse", upload.single("upfile"), (req,res)=>{
   try {
-    
-    console.log(req.body, req.file);
-    res.status(200).json(req.file);
+    const file = req.file;
+    res.status(200).json({
+      name: file.filename,
+      type: file.mimetype,
+      size: file.size
+    });
   } catch (error) {
     res.status(500).json(error);
   }
